@@ -1,13 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <title>Pokewiki</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .card-img .gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-img .static {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-img:hover .gif {
+            opacity: 1;
+        }
+
+        .card-img:hover .static {
+            opacity: 0;
+        }
+
+        .card-img:hover img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    </style>
+</head>
 </head>
 <body>
-    <h1>Olá mundo</h1>
+    <header class="bg-light py-3">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <img src="Pokemon_logo.png" id="logo" alt="Logo Pokémon" class="img-fluid" style="max-height: 100px;">
+
+            <nav class="nav">
+                <a class="nav-link px-2" href="#squirtle">Squirtle</a>
+                <a class="nav-link px-2" href="#bulbasaur">Bulbasaur</a>
+                <a class="nav-link px-2" href="#charmander">Charmander</a>
+                <a class="nav-link px-2" href="#pokedex">Pokedex</a>
+            </nav>
+            <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        </div>
+    </header>
+
+<main class="text-center my-4">
+        <img src="pokemonbanner.jpg" alt="Pokémon banner" 
+     class="img-fluid rounded shadow mb-3 mx-auto d-block" 
+     style="max-width: 800px;">
+        <div class="container">
+            <h2>Bem-vindo ao Pokewiki!</h2>
+            <p class="lead">Veja os Pokémon e suas estatisticas com os cards. Clique neles imagens para acessar sua pokedex mais avançada.</p>
+        </div>
+    </main>
+
+
+
+    <section class="container my-4">
+        <div class="row justify-content-center g-4 d-flex align-items-stretch">
+
+            <div class="col-md-4" id="squirtle">
+                <div class="card text-center bg-primary text-white h-100">
+                    <a href="https://pokemondb.net/pokedex/squirtle" target="_blank">
+                        <div class="card-img position-relative">
+                            <img src="squirtle.png" alt="Squirtle" class="static">
+                            <img src="squirtle2.gif" alt="Squirtle animado" class="gif">
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Squirtle</h5>
+                        <p class="card-text">Tipo: Água</p>
+                        <p class="card-text">Stats: HP 44, ATK 48, DEF 65, SPA 50, SPD 64, SPE 43</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="bulbasaur">
+                <div class="card text-center bg-success text-white h-100">
+                    <a href="https://pokemondb.net/pokedex/bulbasaur" target="_blank">
+                        <div class="card-img position-relative">
+                            <img src="bulbasaur.png" alt="Bulbasaur" class="static">
+                            <img src="bulbasaur2.gif" alt="Bulbasaur animado" class="gif">
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Bulbasaur</h5>
+                        <p class="card-text">Tipo: Grama/Venenoso</p>
+                        <p class="card-text">Stats: HP 45, ATK 49, DEF 49, SPA 65, SPD 65, SPE 45</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="charmander">
+                <div class="card text-center bg-danger text-white h-100">
+                    <a href="https://pokemondb.net/pokedex/charmander" target="_blank">
+                        <div class="card-img position-relative">
+                            <img src="charmander.png" alt="Charmander" class="static">
+                            <img src="charmander2.gif" alt="Charmander animado" class="gif">
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Charmander</h5>
+                        <p class="card-text">Tipo: Fogo</p>
+                        <p class="card-text">Stats: HP 39, ATK 52, DEF 43, SPA 60, SPD 50, SPE 65</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+        <div>Aluno: Alex Prieto</div>
+        <div>Puc Minas - São Gabriel</div>
+        <div><a href="https://www.nintendo.com/pt-br/" class="text-white" target="_blank">Nintendo.com</a></div>
+        <div><a href="https://www.pokemon.com/br/" class="text-white" target="_blank">Pokémon.com</a></div>
+    </div>
+</footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
