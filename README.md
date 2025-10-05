@@ -1,24 +1,43 @@
-# Trabalho Prático - Semana 04 e 05
+# Trabalho Prático 05 - Semanas 7 e 8
 
-Dessa vez, vamos dar sequência ao projeto iniciado na semana passada. Se você ainda não fez o projeto da semana anterior, fique atento, se programe e procure colocar as atividades em dia. Volte lá, leia tudo e faça sua parte pois essa atividade depende da atividade anterior..
+**Páginas de detalhes dinâmicas**
 
-Nessa atividade,vamos evoluir o projeto para que a home-page funcione bem tanto no celular quanto no desktop, entendendo também como é o processo gradativo e colaborativo de desenvolvimento de um software, registrando cada etapa no histórico de commits do repositório do git/GitHub.
+Nessa etapa, vamos evoluir o trabalho anterior, acrescentando a página de detalhes, conforme o  projeto escolhido. Imagine que a página principal (home-page) mostre um visão dos vários itens que existem no seu site. Ao clicar em um item, você é direcionado pra a página de detalhes. A página de detalhe vai mostrar todas as informações sobre o item do seu projeto. seja esse item uma notícia, filme, receita, lugar turístico ou evento.
 
-**IMPORTANTE:** Você deve trabalhar e alterar apenas arquivos dentro da pasta **`public`,** mantendo os arquivos **`index.html`** e **`styles.css`** com estes nomes. Deixe todos os demais arquivos e pastas desse repositório inalterados. **PRESTE MUITA ATENÇÃO NISSO.**
+Leia o enunciado completo no Canvas. 
+
+**IMPORTANTE:** Assim como informado anteriormente, capriche na etapa pois você vai precisar dessa parte para as próximas semanas. 
+
+**IMPORTANTE:** Você deve trabalhar e alterar apenas arquivos dentro da pasta **`public`,** mantendo os arquivos **`index.html`**, **`styles.css`** e **`app.js`** com estes nomes, conforme enunciado. Deixe todos os demais arquivos e pastas desse repositório inalterados. **PRESTE MUITA ATENÇÃO NISSO.**
 
 ## Informações Gerais
 
- Nome: Alex Prieto Garbazza Ferraz
+- Nome: Alex Prieto Garbazza Ferraa
 - Matricula: 897619
 - Proposta de projeto escolhida: Pokemon
-- Breve descrição sobre seu projeto: Sobre os pokemons, suas caracteristicas, tipagens e estatistícas
+- Breve descrição sobre seu projeto: Site sobre pokemon e suas caracteristicas e estatisticas
 
-## Print da versão responsiva com CSS puro
+## Print da Home-Page
 
-<img src="image.png" alt="css">
-<img src="image-1.png" alt="css">
+<<  COLOQUE A IMAGEM AQUI >>
 
-## Print da versão responsiva com Bootstrap
+## Print da página de detalhes do item
 
-<img src="image-2.png" alt="bootstrap">
-<img src="image-3.png" alt="bootstrap">
+<<  COLOQUE A IMAGEM AQUI >>
+
+## Cole aqui abaixo a estrutura JSON utilizada no app.js
+
+```javascript
+const dados = [
+  {
+    "id": 1,
+    "titulo": "Prefeitura Lança Plano de Mobilidade Urbana",
+    "descricao": "Novo plano do transporte público.",
+    "conteudo": "A Prefeitura apresentou nesta segunda-feira um novo plano de mobilidade urbana.",
+    "categoria": "Cidades",
+    "autor": "Joana Ribeiro",
+    "data": "2025-03-30",
+    "imagem": "img/mobilidade.jpg"
+  }
+]
+```
