@@ -11,39 +11,27 @@
       font-family: Arial, sans-serif;
       padding-top: 80px;
     }
-
-    header {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 1rem;
-      text-align: center;
-    }
-
     .banner img {
       max-width: 100%;
       height: auto;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     .card {
       border-radius: 15px;
       overflow: hidden;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
     .card:hover {
       transform: translateY(-5px);
     }
-
     .card-img {
       position: relative;
       height: 200px;
       background-color: #fff;
     }
-
-    .card-img .static {
+    .card-img .static, .card-img .gif {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -52,30 +40,10 @@
       left: 0;
       transition: opacity 0.3s ease;
     }
-
-    .card-img .gif {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card-img:hover .gif {
-      opacity: 1;
-    }
-
-    .card-img:hover .static {
-      opacity: 0;
-    }
-
-    .card-body {
-      color: #fff;
-    }
-
+    .card-img .gif { opacity: 0; }
+    .card-img:hover .gif { opacity: 1; }
+    .card-img:hover .static { opacity: 0; }
+    .card-body { color: #fff; }
     footer {
       background-color: #222;
       color: #fff;
@@ -92,7 +60,6 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="pokemon-menu">
         </ul>
@@ -101,17 +68,12 @@
     </div>
   </nav>
 
-  <header>
-    <h1>Pokewiki</h1>
-  </header>
-
   <section class="banner container my-4">
     <img src="pokemonbanner.jpg" alt="Banner Pokémon" class="img-fluid mx-auto d-block">
   </section>
 
   <main class="container my-4">
-    <div class="row g-4" id="lista-pokemons">
-    </div>
+    <div class="row g-4" id="lista-pokemons"></div>
   </main>
 
   <footer>
