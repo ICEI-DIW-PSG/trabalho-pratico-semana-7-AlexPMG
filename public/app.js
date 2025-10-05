@@ -1,92 +1,122 @@
 const pokemons = [
   {
     id: 1,
-    nome: "Squirtle",
-    tipo: "Água",
-    stats: "HP 44, ATK 48, DEF 65, SPA 50, SPD 64, SPE 43",
-    imagem: "squirtle.png",
-    gif: "squirtle2.gif",
-    descricao: "Squirtle é um Pokémon do tipo Água."
+    nome: "Bulbasaur",
+    tipo: "Grama",
+    cor: "success",
+    imagem: "bulbasaur.png",  
+    gif: "bulbasaur2.gif",    
+    stats: "HP: 45 | ATK: 49 | DEF: 49 | SPA: 65 | SPD: 65 | SPE: 45",
+    descricao: "Bulbasaur é o inicial do tipo grama da região de Kanto."
   },
   {
     id: 2,
-    nome: "Bulbasaur",
-    tipo: "Grama/Venenoso",
-    stats: "HP 45, ATK 49, DEF 49, SPA 65, SPD 65, SPE 45",
-    imagem: "bulbasaur.png",
-    gif: "bulbasaur2.gif",
-    descricao: "Bulbasaur é um Pokémon do tipo Grama/Venenoso."
+    nome: "Charmander",
+    tipo: "Fogo",
+    cor: "danger",
+    imagem: "charmander.png",
+    gif: "charmander2.gif",
+    stats: "HP: 39 | ATK: 52 | DEF: 43 | SPA: 60 | SPD: 50 | SPE: 65",
+    descricao: "Charmander é o inicial do tipo fogo da região de Kanto."
   },
   {
     id: 3,
-    nome: "Charmander",
-    tipo: "Fogo",
-    stats: "HP 39, ATK 52, DEF 43, SPA 60, SPD 50, SPE 65",
-    imagem: "charmander.png",
-    gif: "charmander2.gif",
-    descricao: "Charmander é um Pokémon do tipo Fogo."
+    nome: "Squirtle",
+    tipo: "Água",
+    cor: "primary",
+    imagem: "squirtle.png",
+    gif: "squirtle2.gif",
+    stats: "HP: 44 | ATK: 48 | DEF: 65 | SPA: 50 | SPD: 64 | SPE: 43",
+    descricao: "Squirtle é o inicial do tipo água da região de Kanto."
   }
 ];
 
 function montarHome() {
-  const container = document.querySelector('.row'); 
-  if (!container) return;
-
+  const container = document.getElementById('lista-pokemons');
   container.innerHTML = '';
 
   pokemons.forEach(p => {
     const col = document.createElement('div');
-    col.classList.add('col-md-4');
+    col.className = 'col-12 col-sm-6 col-md-4';
 
     col.innerHTML = `
-      <div class="card text-center h-100 ${
-        p.tipo.includes('Água') ? 'bg-primary' : p.tipo.includes('Fogo') ? 'bg-danger' : 'bg-success'
-      } text-white">
-        <a href="detalhes.html?id=${p.id}">
-          <div class="card-img position-relative">
+      <div class="card text-center bg-${p.cor} text-white h-100">
+        <a href="detalhes.html?id=${p.id}" class="text-decoration-none text-white">
+          <div class="card-img">
             <img src="${p.imagem}" alt="${p.nome}" class="static">
             <img src="${p.gif}" alt="${p.nome} animado" class="gif">
           </div>
+          <div class="card-body">
+            <h5 class="card-title">${p.nome}</h5>
+            <p class="card-text">${p.tipo}</p>
+            <p class="card-text">${p.stats}</p>
+          </div>
         </a>
-        <div class="card-body">
-          <h5 class="card-title">${p.nome}</h5>
-          <p class="card-text">Tipo: ${p.tipo}</p>
-          <p class="card-text">Stats: ${p.stats}</p>
-        </div>
       </div>
     `;
+
     container.appendChild(col);
   });
 }
-
-function montarDetalhes() {
+function montarDetalhes(id) {
   const container = document.getElementById('detalhes-item');
-  if (!container) return;
+  const pIndex = pokemons.findIndex(item => item.id == id);
 
-  const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get('id')); 
-  const p = pokemons.find(i => i.id === id);
-
-  if (!p) {
-    container.innerHTML = '<p>Pokémon não encontrado.</p>';
+  if (pIndex === -1) {
+    container.innerHTML = `<p>Pokémon não encontrado.</p>`;
     return;
   }
 
+  const p = pokemons[pIndex];
+
   container.innerHTML = `
-    <h2>${p.nome}</h2>
-    <img src="${p.imagem}" alt="${p.nome}" class="img-fluid mb-3" style="max-width: 300px; border-radius: 15px;">
-    <p><strong>Tipo:</strong> ${p.tipo}</p>
-    <p><strong>Stats:</strong> ${p.stats}</p>
-    <p>${p.descricao}</p>
-    <a href="index.html" class="btn btn-primary mt-3">Voltar</a>
+    <div class="detalhes-topo bg-${p.cor} text-white p-3 rounded-top">
+      <h2>${p.nome}</h2>
+      <img src="${p.imagem}" alt="${p.nome}" style="width:150px; height:150px; object-fit:contain;">
+    </div>
+    <div class="detalhes-info mt-3">
+      <p><strong>Tipo:</strong> ${p.tipo}</p>
+      <p><strong>Stats:</strong> ${p.stats}</p>
+      <p><strong>Descrição:</strong> ${p.descricao}</p>
+
+      <div class="d-flex justify-content-between mt-3">
+        <button id="btn-anterior" class="btn btn-outline-primary">← Anterior</button>
+        <a href="index.html" class="btn btn-secondary">Voltar</a>
+        <button id="btn-proximo" class="btn btn-outline-primary">Próximo →</button>
+      </div>
+    </div>
   `;
+
+  document.title = `Pokewiki - ${p.nome}`;
+
+  const btnAnterior = document.getElementById('btn-anterior');
+  const btnProximo = document.getElementById('btn-proximo');
+
+  btnAnterior.addEventListener('click', () => {
+    if (pIndex > 0) {
+      const anterior = pokemons[pIndex - 1];
+      montarDetalhes(anterior.id);
+      history.replaceState(null, "", `?id=${anterior.id}`);
+    }
+  });
+
+  btnProximo.addEventListener('click', () => {
+    if (pIndex < pokemons.length - 1) {
+      const proximo = pokemons[pIndex + 1];
+      montarDetalhes(proximo.id);
+      history.replaceState(null, "", `?id=${proximo.id}`);
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.row')) {
+  if (document.getElementById('lista-pokemons')) {
     montarHome();
   }
-  if (document.getElementById('detalhes-item')) {
-    montarDetalhes();
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (document.getElementById('detalhes-item') && id) {
+    montarDetalhes(id);
   }
 });
